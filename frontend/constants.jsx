@@ -1,2 +1,2 @@
-export const API = "http://127.0.0.1:9090";
-export const POCKETBASE_API = "http://127.0.0.1:8090";
+export const API = "http://213.178.155.28";
+export const POCKETBASE_API = "http://213.178.155.28:8090";

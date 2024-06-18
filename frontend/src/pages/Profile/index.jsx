@@ -16,6 +16,8 @@ import {
   Input,
   Select,
   Option,
+  RadioGroup,
+  Radio,
 } from "@mui/joy";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -205,53 +207,141 @@ function Profile() {
                   }}
                 />
               </Stack>
-              {!editInfo && auth.user_id === userData?.id ? (
-                <Typography level="body-lg">
-                  {userData?.years} years old, {userData?.gender}
-                </Typography>
-              ) : (
-                <Stack direction="row" alignItems="center" spacing={1.5}>
+              <Stack direction="row" alignItems="center" spacing={1.5}>
+                {!editInfo && auth.user_id === userData?.id ? (
+                  <Typography level="body-lg">
+                    {userData?.years} years old, {userData?.gender}
+                  </Typography>
+                ) : (
+                  <>
+                    <Input
+                      type="number"
+                      size="md"
+                      placeholder="Years old"
+                      value={userDublicate?.years}
+                      onChange={(e) => {
+                        setUserDublicate({
+                          ...userDublicate,
+                          years: e.target.value,
+                        });
+                      }}
+                    />
+                    <Select
+                      value={userDublicate?.gender}
+                      onChange={(e, newValue) => {
+                        setUserDublicate({
+                          ...userDublicate,
+                          gender: newValue,
+                        });
+                      }}
+                    >
+                      <Option value="male">male</Option>
+                      <Option value="female">female</Option>
+                    </Select>
+                  </>
+                )}
+              </Stack>
+              <Stack direction="row" alignItems="center" spacing={1.5}>
+                {!editInfo && auth.user_id === userData?.id ? (
+                  <Typography level="body-sm">{userData?.city}</Typography>
+                ) : (
                   <Input
-                    type="number"
                     size="md"
-                    placeholder="Years old"
-                    value={userDublicate?.years}
+                    placeholder="City"
+                    value={userDublicate?.city}
                     onChange={(e) => {
                       setUserDublicate({
                         ...userDublicate,
-                        years: e.target.value,
+                        city: e.target.value,
                       });
                     }}
                   />
+                )}
+                {!editInfo && auth.user_id === userData?.id ? (
+                  <Typography level="body-lg">
+                    {userData?.maritalStatus ? "Married" : "Not Married"}
+                  </Typography>
+                ) : (
                   <Select
-                    value={userDublicate?.gender}
+                    value={userDublicate?.maritalStatus ? "married" : "not_married"}
                     onChange={(e, newValue) => {
                       setUserDublicate({
                         ...userDublicate,
-                        gender: newValue,
+                        maritalStatus: newValue === "married",
                       });
                     }}
                   >
-                    <Option value="male">male</Option>
-                    <Option value="female">female</Option>
+                    <Option value="married">Married</Option>
+                    <Option value="not_married">Not Married</Option>
                   </Select>
-                </Stack>
-              )}
-              {!editInfo && auth.user_id === userData?.id ? (
-                <Typography level="body-sm">{userData?.city}</Typography>
-              ) : (
-                <Input
-                  size="md"
-                  placeholder="City"
-                  value={userDublicate?.city}
-                  onChange={(e) => {
-                    setUserDublicate({
-                      ...userDublicate,
-                      city: e.target.value,
-                    });
-                  }}
-                />
-              )}
+                )}
+              </Stack>
+              <Stack direction="row" alignItems="center" spacing={1.5}>
+                {!editInfo && auth.user_id === userData?.id ? (
+                  <Typography level="body-lg">{userData?.children} children</Typography>
+                ) : (
+                  <Input
+                    type="number"
+                    size="md"
+                    placeholder="Number of children"
+                    value={userDublicate?.children}
+                    onChange={(e) => {
+                      setUserDublicate({
+                        ...userDublicate,
+                        children: e.target.value,
+                      });
+                    }}
+                  />
+                )}
+                {!editInfo && auth.user_id === userData?.id ? (
+                  <Typography level="body-lg">{userData?.height} cm</Typography>
+                ) : (
+                  <Input
+                    type="number"
+                    size="md"
+                    placeholder="Height (cm)"
+                    value={userDublicate?.height}
+                    onChange={(e) => {
+                      setUserDublicate({
+                        ...userDublicate,
+                        height: e.target.value,
+                      });
+                    }}
+                  />
+                )}
+              </Stack>
+              <Stack direction="row" alignItems="center" spacing={1.5}>
+                {!editInfo && auth.user_id === userData?.id ? (
+                  <Typography level="body-lg">{userData?.hairColor}</Typography>
+                ) : (
+                  <Input
+                    size="md"
+                    placeholder="Hair Color"
+                    value={userDublicate?.hairColor}
+                    onChange={(e) => {
+                      setUserDublicate({
+                        ...userDublicate,
+                        hairColor: e.target.value,
+                      });
+                    }}
+                  />
+                )}
+                {!editInfo && auth.user_id === userData?.id ? (
+                  <Typography level="body-lg">{userData?.profession}</Typography>
+                ) : (
+                  <Input
+                    size="md"
+                    placeholder="Profession"
+                    value={userDublicate?.profession}
+                    onChange={(e) => {
+                      setUserDublicate({
+                        ...userDublicate,
+                        profession: e.target.value,
+                      });
+                    }}
+                  />
+                )}
+              </Stack>
             </Stack>
             <Stack
               direction="column"
