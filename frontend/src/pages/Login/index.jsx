@@ -1,4 +1,4 @@
-import { Box, Stack, Input, Textarea, Button } from "@mui/joy";
+import { Box, Stack, Input, Textarea, Button, Select, Option } from "@mui/joy";
 import { Tab, Tabs } from "@mui/material";
 import axios from "axios";
 import { useState } from "react";
@@ -17,6 +17,12 @@ function Login() {
   const [date, setDate] = useState("");
   const [gender, setGender] = useState("male");
   const [city, setCity] = useState("");
+  const [maritalStatus, setMaritalStatus] = useState("Not married");
+  const [children, setChildren] = useState("");
+  const [height, setHeight] = useState("");
+  const [hairColor, setHairColor] = useState("");
+  const [eyeColor, setEyeColor] = useState("");
+  const [profession, setProfession] = useState("");
 
   const navigate = useNavigate();
 
@@ -130,6 +136,57 @@ function Login() {
               value={city}
               onChange={(e) => {
                 setCity(e.target.value);
+              }}
+            />
+            <Select
+              sx={{ width: '15%' }}
+              value={maritalStatus}
+              placeholder="Marital"
+              onChange={(e, newValue) => {
+                setMaritalStatus(newValue);
+              }}
+            >
+              <Option value="married">Married</Option>
+              <Option value="not_married">Not Married</Option>
+            </Select>
+            <Input
+              placeholder="Number of children"
+              type="number"
+              value={children}
+              onChange={(e) => {
+                setChildren(e.target.value);
+              }}
+            />
+            <Input
+              placeholder="Height (cm)"
+              type="number"
+              value={height}
+              onChange={(e) => {
+                setHeight(e.target.value);
+              }}
+            />
+            <Input
+              placeholder="Hair Color"
+              type="text"
+              value={hairColor}
+              onChange={(e) => {
+                setHairColor(e.target.value);
+              }}
+            />
+            <Input
+              placeholder="Eye Color"
+              type="text"
+              value={eyeColor}
+              onChange={(e) => {
+                setEyeColor(e.target.value);
+              }}
+            />
+            <Input
+              placeholder="Profession"
+              type="text"
+              value={profession}
+              onChange={(e) => {
+                setProfession(e.target.value);
               }}
             />
             <Tabs

@@ -342,6 +342,23 @@ function Profile() {
                   />
                 )}
               </Stack>
+              <Stack direction="row" alignItems="center" spacing={1.5}>
+                {!editInfo && auth.user_id === userData?.id ? (
+                  <Typography level="body-lg">{userData?.eyeColor}</Typography>
+                ) : (
+                  <Input
+                    size="md"
+                    placeholder="Eye Color"
+                    value={userDublicate?.eyeColor}
+                    onChange={(e) => {
+                      setUserDublicate({
+                        ...userDublicate,
+                        eyeColor: e.target.value,
+                      });
+                    }}
+                  />
+                )}
+              </Stack>
             </Stack>
             <Stack
               direction="column"
