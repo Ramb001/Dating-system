@@ -263,22 +263,26 @@ function Profile() {
                   </Typography>
                 ) : (
                   <Select
-                    value={userDublicate?.maritalStatus ? "married" : "not_married"}
+                    value={
+                      userDublicate?.maritalStatus ? "Married" : "Not married"
+                    }
                     onChange={(e, newValue) => {
                       setUserDublicate({
                         ...userDublicate,
-                        maritalStatus: newValue === "married",
+                        maritalStatus: newValue === true,
                       });
                     }}
                   >
-                    <Option value="married">Married</Option>
-                    <Option value="not_married">Not Married</Option>
+                    <Option value={true}>Married</Option>
+                    <Option value={false}>Not Married</Option>
                   </Select>
                 )}
               </Stack>
               <Stack direction="row" alignItems="center" spacing={1.5}>
                 {!editInfo && auth.user_id === userData?.id ? (
-                  <Typography level="body-lg">{userData?.children} children</Typography>
+                  <Typography level="body-lg">
+                    {userData?.children} children
+                  </Typography>
                 ) : (
                   <Input
                     type="number"
@@ -327,7 +331,9 @@ function Profile() {
                   />
                 )}
                 {!editInfo && auth.user_id === userData?.id ? (
-                  <Typography level="body-lg">{userData?.profession}</Typography>
+                  <Typography level="body-lg">
+                    {userData?.profession}
+                  </Typography>
                 ) : (
                   <Input
                     size="md"

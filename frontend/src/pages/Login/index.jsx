@@ -17,9 +17,9 @@ function Login() {
   const [date, setDate] = useState("");
   const [gender, setGender] = useState("male");
   const [city, setCity] = useState("");
-  const [maritalStatus, setMaritalStatus] = useState("Not married");
-  const [children, setChildren] = useState("");
-  const [height, setHeight] = useState("");
+  const [maritalStatus, setMaritalStatus] = useState(false);
+  const [children, setChildren] = useState(0);
+  const [height, setHeight] = useState(0);
   const [hairColor, setHairColor] = useState("");
   const [eyeColor, setEyeColor] = useState("");
   const [profession, setProfession] = useState("");
@@ -146,8 +146,8 @@ function Login() {
                 setMaritalStatus(newValue);
               }}
             >
-              <Option value="married">Married</Option>
-              <Option value="not_married">Not Married</Option>
+              <Option value={true}>Married</Option>
+              <Option value={false}>Not Married</Option>
             </Select>
             <Input
               placeholder="Number of children"

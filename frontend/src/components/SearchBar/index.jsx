@@ -21,7 +21,7 @@ function SearchBar({ setUsers }) {
   const [years, setYears] = useState([0, 100]);
   const [city, setCity] = useState("");
   const [interests, setInterests] = useState([]);
-  const [maritalStatus, setMaritalStatus] = useState("");
+  const [maritalStatus, setMaritalStatus] = useState(false);
   const [children, setChildren] = useState("");
   const [height, setHeight] = useState("");
   const [hairColor, setHairColor] = useState("");
@@ -41,7 +41,7 @@ function SearchBar({ setUsers }) {
       gender: gender ? gender : "",
       years: years,
       city: city,
-      maritalStatus: maritalStatus === "married",
+      maritalStatus: maritalStatus === false,
       children: children,
       height: height,
       hairColor: hairColor,
@@ -203,8 +203,8 @@ function SearchBar({ setUsers }) {
           }}
           sx={{ width: "100%" }}
         >
-          <Option value="married">Married</Option>
-          <Option value="not_married">Not Married</Option>
+          <Option value={true}>Married</Option>
+          <Option value={false}>Not Married</Option>
         </Select>
         <Button
           sx={{ width: "100%" }}
