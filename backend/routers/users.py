@@ -52,6 +52,12 @@ async def signup(params: SignupData):
                 years=params.years,
                 gender=params.gender,
                 city=params.city,
+                maritalStatus=params.maritalStatus,
+                children=params.children,
+                height=params.height,
+                hairColor=params.hairColor,
+                eyeColor=params.eyeColor,
+                profession=params.profession,
             )
             return {"status": True}
 
@@ -81,6 +87,12 @@ async def edit_info(params: UpdateInfo):
             description=params.description,
             city=params.city,
             years=params.years,
+            maritalStatus=params.maritalStatus,
+            children=params.children,
+            height=params.height,
+            hairColor=params.hairColor,
+            eyeColor=params.eyeColor,
+            profession=params.profession,
         )
 
 

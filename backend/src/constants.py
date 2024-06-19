@@ -28,6 +28,12 @@ class SignupData(BaseModel):
     years: str
     gender: str
     city: str
+    maritalStatus: bool
+    children: int
+    height: int
+    hairColor: str
+    eyeColor: str
+    profession: str
 
 
 class UpdateInfo(BaseModel):
@@ -38,6 +44,12 @@ class UpdateInfo(BaseModel):
     description: str
     city: str
     years: int
+    maritalStatus: bool
+    children: int
+    height: int
+    hairColor: str
+    eyeColor: str
+    profession: str
 
 
 class UpdateInterests(BaseModel):
@@ -52,6 +64,12 @@ class SearchData(BaseModel):
     years: list[int]
     city: str
     interests: list[str]
+    maritalStatus: bool
+    children: int
+    height: int
+    hairColor: str
+    eyeColor: str
+    profession: str
 
 
 class LikeData(BaseModel):
