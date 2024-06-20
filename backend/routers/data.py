@@ -52,7 +52,7 @@ async def likes(user_id: str):
         likes = await PB.fetch_records(
             PocketbaseCollections.LIKES,
             client,
-            filter=f"receiver='{user_id}'",
+            # filter=f"receiver='{user_id}'",
             expand="interests",
         )
 
