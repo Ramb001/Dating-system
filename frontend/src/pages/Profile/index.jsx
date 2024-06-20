@@ -16,8 +16,6 @@ import {
   Input,
   Select,
   Option,
-  RadioGroup,
-  Radio,
 } from "@mui/joy";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -32,6 +30,7 @@ function Profile() {
   const [userData, setUserData] = useState(null);
   const [userDublicate, setUserDublicate] = useState(userData);
   const [interests, setInterests] = useState([]);
+  console.log(userData);
 
   useEffect(() => {
     axios
@@ -77,7 +76,24 @@ function Profile() {
       (!editDescription && userData !== userDublicate) ||
       (!editInfo && userData !== userDublicate)
     ) {
-      axios.post(`${API}/users/edit/info`, userDublicate).then(() => {
+      const json = {
+        id: userDublicate.id,
+        surname: userDublicate.surname,
+        name: userDublicate.name,
+        description: userDublicate.description,
+        gender: userDublicate.gender ? userDublicate.gender : "",
+        years: parseFloat(userDublicate.years),
+        city: userDublicate.city,
+        maritalStatus: userDublicate.marital_status
+          ? userDublicate.marital_status
+          : "",
+        children: parseFloat(userDublicate.children),
+        height: parseFloat(userDublicate.height),
+        hairColor: userDublicate.hair_color,
+        eyeColor: userDublicate.eye_color,
+        profession: userDublicate.profession,
+      };
+      axios.post(`${API}/users/edit/info`, json).then(() => {
         axios
           .get(`${API}/users/info`, { params: { user_id: auth.user_id } })
           .then((resp) => {
@@ -157,7 +173,7 @@ function Profile() {
             direction="column"
             justifyContent="space-between"
             alignItems="flex-start"
-            spacing={5}
+            spacing={2.5}
           >
             <Stack
               direction="column"
@@ -241,7 +257,7 @@ function Profile() {
                   </>
                 )}
               </Stack>
-              <Stack direction="row" alignItems="center" spacing={1.5}>
+              <Stack direction="column">
                 {!editInfo && auth.user_id === userData?.id ? (
                   <Typography level="body-sm">{userData?.city}</Typography>
                 ) : (
@@ -259,17 +275,15 @@ function Profile() {
                 )}
                 {!editInfo && auth.user_id === userData?.id ? (
                   <Typography level="body-lg">
-                    {userData?.maritalStatus ? "Married" : "Not Married"}
+                    {userData?.marital_status ? "Married" : "Not Married"}
                   </Typography>
                 ) : (
                   <Select
-                    value={
-                      userDublicate?.maritalStatus ? "Married" : "Not married"
-                    }
-                    onChange={(e, newValue) => {
+                    value={userDublicate?.marital_status}
+                    onChange={(_, newValue) => {
                       setUserDublicate({
                         ...userDublicate,
-                        maritalStatus: newValue === true,
+                        maritalStatus: newValue,
                       });
                     }}
                   >
@@ -278,7 +292,7 @@ function Profile() {
                   </Select>
                 )}
               </Stack>
-              <Stack direction="row" alignItems="center" spacing={1.5}>
+              <Stack direction="column">
                 {!editInfo && auth.user_id === userData?.id ? (
                   <Typography level="body-lg">
                     {userData?.children} children
@@ -298,7 +312,9 @@ function Profile() {
                   />
                 )}
                 {!editInfo && auth.user_id === userData?.id ? (
-                  <Typography level="body-lg">{userData?.height} cm</Typography>
+                  <Typography level="body-lg">
+                    Height: {userData?.height} cm
+                  </Typography>
                 ) : (
                   <Input
                     type="number"
@@ -314,14 +330,16 @@ function Profile() {
                   />
                 )}
               </Stack>
-              <Stack direction="row" alignItems="center" spacing={1.5}>
+              <Stack direction="column">
                 {!editInfo && auth.user_id === userData?.id ? (
-                  <Typography level="body-lg">{userData?.hairColor}</Typography>
+                  <Typography level="body-lg">
+                    Hair color: {userData?.hair_color}
+                  </Typography>
                 ) : (
                   <Input
                     size="md"
                     placeholder="Hair Color"
-                    value={userDublicate?.hairColor}
+                    value={userDublicate?.hair_color}
                     onChange={(e) => {
                       setUserDublicate({
                         ...userDublicate,
@@ -332,7 +350,7 @@ function Profile() {
                 )}
                 {!editInfo && auth.user_id === userData?.id ? (
                   <Typography level="body-lg">
-                    {userData?.profession}
+                    Profession: {userData?.profession}
                   </Typography>
                 ) : (
                   <Input
@@ -350,12 +368,14 @@ function Profile() {
               </Stack>
               <Stack direction="row" alignItems="center" spacing={1.5}>
                 {!editInfo && auth.user_id === userData?.id ? (
-                  <Typography level="body-lg">{userData?.eyeColor}</Typography>
+                  <Typography level="body-lg">
+                    Eyes: {userData?.eye_color}
+                  </Typography>
                 ) : (
                   <Input
                     size="md"
                     placeholder="Eye Color"
-                    value={userDublicate?.eyeColor}
+                    value={userData.eye_color}
                     onChange={(e) => {
                       setUserDublicate({
                         ...userDublicate,

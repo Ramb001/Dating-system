@@ -63,10 +63,10 @@ class SearchData(BaseModel):
     gender: str
     years: list[int]
     city: str
-    interests: list[str]
-    maritalStatus: bool
-    children: int
-    height: int
+    interests: list[str] | list
+    maritalStatus: bool | str
+    children: int | str
+    height: int | str
     hairColor: str
     eyeColor: str
     profession: str

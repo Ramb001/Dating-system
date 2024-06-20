@@ -42,8 +42,8 @@ function SearchBar({ setUsers }) {
       years: years,
       city: city,
       maritalStatus: maritalStatus ? maritalStatus : "",
-      children: children,
-      height: height,
+      children: parseFloat(children) || "",
+      height: parseFloat(height) || "",
       hairColor: hairColor,
       eyeColor: eyeColor,
       profession: profession,
@@ -51,6 +51,7 @@ function SearchBar({ setUsers }) {
         return interest.id;
       }),
     };
+    console.log(json);
     axios.post(`${API}/data/users`, json).then((resp) => {
       setUsers(resp.data);
     });
