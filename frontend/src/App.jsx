@@ -4,6 +4,7 @@ import Login from "./pages/Login";
 import PageTemplate from "./PageTemplate";
 import Profile from "./pages/Profile";
 import Search from "./pages/Search";
+import Likes from "./pages/Likes";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/signout" element={<Navigate to={"/"} />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/search" element={<Search />} />
+          <Route path="/likes" element={<Likes />} />
         </Route>
       </Routes>
     </BrowserRouter>

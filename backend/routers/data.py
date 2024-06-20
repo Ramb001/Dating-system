@@ -14,7 +14,7 @@ async def login():
 
 
 @router.post("/data/users", tags=["data"])
-async def login(params: SearchData):
+async def users(params: SearchData):
     async with aiohttp.ClientSession() as client:
         filter = []
         if params.surname != "":
@@ -44,3 +44,14 @@ async def login(params: SearchData):
             expand="interests",
         )
         return users["items"]
+
+
+@router.get("/data/likes", tags=["data"])
+async def likes(user_id: str):
+    async with aiohttp.ClientSession() as client:
+        return await PB.fetch_records(
+            PocketbaseCollections.LIKES,
+            client,
+            filter=f"receiver='{user_id}'",
+            expand="interests",
+        )
