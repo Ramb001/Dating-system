@@ -49,9 +49,11 @@ async def users(params: SearchData):
 @router.get("/data/likes", tags=["data"])
 async def likes(user_id: str):
     async with aiohttp.ClientSession() as client:
-        return await PB.fetch_records(
+        likes = await PB.fetch_records(
             PocketbaseCollections.LIKES,
             client,
             filter=f"receiver='{user_id}'",
             expand="interests",
         )
+
+        return likes["items"]

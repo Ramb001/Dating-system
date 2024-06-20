@@ -1,4 +1,4 @@
-import { Stack, Table } from "@mui/joy";
+import { Stack, Table, Typography } from "@mui/joy";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { API } from "../../../constants";
@@ -15,7 +15,8 @@ function Likes() {
   }, []);
 
   return (
-    <Stack direction="column" spacing={2.5}>
+    <Stack direction="column" padding="20px">
+      <Typography level="title-lg">You was liked by</Typography>
       <Table>
         <thead>
           <tr>
