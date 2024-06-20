@@ -34,13 +34,18 @@ async def login(params: SearchData):
         if len(params.interests) != 0:
             for interest in params.interests:
                 filter.append(f"interests~'{interest}'")
-
-        users = await PB.fetch_records(
-            PocketbaseCollections.USERS,
-            client,
-            filter="".join(
-                f"&&{item}" if i != 0 else item for i, item in enumerate(filter)
-            ),
-            expand="interests",
-        )
+        if len(filter) != 0:
+            users = await PB.fetch_records(
+                PocketbaseCollections.USERS,
+                client,
+                filter="".join(
+                    f"&&{item}" if i != 0 else item for i, item in enumerate(filter)
+                ),
+                expand="interests",
+            )
+        else:
+            users = await PB.fetch_records(
+                PocketbaseCollections.USERS,
+                client,
+            )
         return users["items"]
