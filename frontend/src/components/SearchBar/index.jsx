@@ -41,7 +41,7 @@ function SearchBar({ setUsers }) {
       gender: gender ? gender : "",
       years: years,
       city: city,
-      maritalStatus: maritalStatus === false,
+      maritalStatus: maritalStatus ? maritalStatus : "",
       children: children,
       height: height,
       hairColor: hairColor,

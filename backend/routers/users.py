@@ -52,6 +52,7 @@ async def signup(params: SignupData):
                 years=params.years,
                 gender=params.gender,
                 city=params.city,
+                interests=[],
                 marital_status=params.maritalStatus,
                 children=params.children,
                 height=params.height,

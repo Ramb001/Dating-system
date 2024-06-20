@@ -31,6 +31,20 @@ function Login() {
       login: login,
       password: password,
     };
+    console.log({
+      ...mainJson,
+      surname: surname,
+      name: name,
+      gender: gender ? gender : "",
+      years: parseFloat(date),
+      city: city,
+      maritalStatus: maritalStatus ? maritalStatus : "",
+      children: parseFloat(children),
+      height: parseFloat(height),
+      hairColor: hairColor,
+      eyeColor: eyeColor,
+      profession: profession,
+    });
     axios
       .post(
         `${API}${type === "log" ? "/users/signin" : "/users/signup"}`,
@@ -40,9 +54,15 @@ function Login() {
               ...mainJson,
               surname: surname,
               name: name,
-              years: date,
-              gender: gender,
+              gender: gender ? gender : "",
+              years: parseFloat(date),
               city: city,
+              maritalStatus: maritalStatus ? maritalStatus : "",
+              children: parseFloat(children),
+              height: parseFloat(height),
+              hairColor: hairColor,
+              eyeColor: eyeColor,
+              profession: profession,
             }
       )
       .then((resp) => {
@@ -139,7 +159,7 @@ function Login() {
               }}
             />
             <Select
-              sx={{ width: '15%' }}
+              sx={{ width: "15%" }}
               value={maritalStatus}
               placeholder="Marital"
               onChange={(e, newValue) => {

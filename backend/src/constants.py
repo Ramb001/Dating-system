@@ -25,10 +25,10 @@ class SignupData(BaseModel):
     password: str
     surname: str
     name: str
-    years: str
+    years: int
     gender: str
     city: str
-    maritalStatus: bool
+    maritalStatus: bool | str
     children: int
     height: int
     hairColor: str
