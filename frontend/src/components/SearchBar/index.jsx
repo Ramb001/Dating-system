@@ -21,7 +21,7 @@ function SearchBar({ setUsers }) {
   const [years, setYears] = useState([0, 100]);
   const [city, setCity] = useState("");
   const [interests, setInterests] = useState([]);
-  const [maritalStatus, setMaritalStatus] = useState(false);
+  const [maritalStatus, setMaritalStatus] = useState("");
   const [children, setChildren] = useState("");
   const [height, setHeight] = useState("");
   const [hairColor, setHairColor] = useState("");
