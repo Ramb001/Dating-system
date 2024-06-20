@@ -34,7 +34,8 @@ async def login(params: SearchData):
         if len(params.interests) != 0:
             for interest in params.interests:
                 filter.append(f"interests~'{interest}'")
-        if len(filter) != 0:
+
+        if len(filter) != 1:
             users = await PB.fetch_records(
                 PocketbaseCollections.USERS,
                 client,
