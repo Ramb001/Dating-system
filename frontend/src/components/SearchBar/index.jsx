@@ -51,6 +51,7 @@ function SearchBar({ setUsers }) {
         return interest.id;
       }),
     };
+    console.log(json);
     axios.post(`${API}/data/users`, json).then((resp) => {
       setUsers(resp.data);
     });
