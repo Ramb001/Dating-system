@@ -53,7 +53,7 @@ async def likes(user_id: str):
             PocketbaseCollections.LIKES,
             client,
             filter=f"receiver.id='{user_id}'",
-            # expand="sender",
+            expand="sender, sender.interests",
         )
 
         return likes["items"]
