@@ -52,11 +52,11 @@ async def signup(params: SignupData):
                 years=params.years,
                 gender=params.gender,
                 city=params.city,
-                maritalStatus=params.maritalStatus,
+                marital_status=params.maritalStatus,
                 children=params.children,
                 height=params.height,
-                hairColor=params.hairColor,
-                eyeColor=params.eyeColor,
+                hair_color=params.hairColor,
+                eye_color=params.eyeColor,
                 profession=params.profession,
             )
             return {"status": True}
