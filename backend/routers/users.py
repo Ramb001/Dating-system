@@ -88,11 +88,11 @@ async def edit_info(params: UpdateInfo):
             description=params.description,
             city=params.city,
             years=params.years,
-            maritalStatus=params.maritalStatus,
+            marital_status=params.maritalStatus,
             children=params.children,
             height=params.height,
-            hairColor=params.hairColor,
-            eyeColor=params.eyeColor,
+            hair_color=params.hairColor,
+            eye_color=params.eyeColor,
             profession=params.profession,
         )
 
